@@ -13,16 +13,16 @@ import fr.ekito.myweatherapp.view.weather.list.WeatherItem
 import fr.ekito.myweatherapp.view.weather.list.WeatherListAdapter
 import kotlinx.android.synthetic.main.fragment_result_list.*
 import org.jetbrains.anko.startActivity
-import org.koin.android.viewmodel.ext.sharedViewModel
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class WeatherListFragment : Fragment() {
 
     private val viewModel: WeatherViewModel by sharedViewModel()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_result_list, container, false)
     }
@@ -43,15 +43,15 @@ class WeatherListFragment : Fragment() {
         weatherList.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         weatherList.adapter = WeatherListAdapter(
-            activity!!,
-            emptyList(),
-            ::onWeatherItemSelected
+                activity!!,
+                emptyList(),
+                ::onWeatherItemSelected
         )
     }
 
     private fun onWeatherItemSelected(resultItem: WeatherItem) {
         activity?.startActivity<DetailActivity>(
-            DetailActivity.INTENT_WEATHER_ID to resultItem.id
+                DetailActivity.INTENT_WEATHER_ID to resultItem.id
         )
     }
 

@@ -39,7 +39,7 @@ class ModuleCheckTest : KoinTest {
     @Test
     fun testTestConfiguration() {
         koinApplication {
-            defaultLogger(Level.DEBUG)
+            printLogger(Level.DEBUG)
             androidContext(mockedAndroidContext)
             modules(testWeatherApp)
         }.checkModules()

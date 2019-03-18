@@ -17,16 +17,16 @@ import fr.ekito.myweatherapp.view.detail.DetailActivity
 import fr.ekito.myweatherapp.view.detail.DetailActivity.Companion.INTENT_WEATHER_ID
 import kotlinx.android.synthetic.main.fragment_result_header.*
 import org.jetbrains.anko.startActivity
-import org.koin.android.viewmodel.ext.sharedViewModel
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class WeatherHeaderFragment : Fragment() {
 
     private val viewModel: WeatherViewModel by sharedViewModel()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_result_header, container, false) as ViewGroup
     }
@@ -42,8 +42,8 @@ class WeatherHeaderFragment : Fragment() {
             when (event) {
                 is WeatherViewModel.ProceedLocation -> showLoadingLocation(event.location)
                 is WeatherViewModel.ProceedLocationError -> showLocationSearchFailed(
-                    event.location,
-                    event.error
+                        event.location,
+                        event.error
                 )
             }
         })
@@ -65,7 +65,7 @@ class WeatherHeaderFragment : Fragment() {
 
         weatherHeader.setOnClickListener {
             activity?.startActivity<DetailActivity>(
-                INTENT_WEATHER_ID to weather.id
+                    INTENT_WEATHER_ID to weather.id
             )
         }
     }
@@ -91,18 +91,18 @@ class WeatherHeaderFragment : Fragment() {
 
     private fun showLoadingLocation(location: String) {
         Snackbar.make(
-            weatherHeader,
-            getString(R.string.loading_location) + " $location ...",
-            Snackbar.LENGTH_LONG
+                weatherHeader,
+                getString(R.string.loading_location) + " $location ...",
+                Snackbar.LENGTH_LONG
         )
-            .show()
+                .show()
     }
 
     private fun showLocationSearchFailed(location: String, error: Throwable) {
         Snackbar.make(weatherHeader, getString(R.string.loading_error), Snackbar.LENGTH_LONG)
-            .setAction(R.string.retry) {
-                viewModel.loadNewLocation(location)
-            }
-            .show()
+                .setAction(R.string.retry) {
+                    viewModel.loadNewLocation(location)
+                }
+                .show()
     }
 }

@@ -13,7 +13,7 @@ import org.jetbrains.anko.clearTask
 import org.jetbrains.anko.clearTop
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.newTask
-import org.koin.android.viewmodel.ext.viewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
  * Weather Result View
@@ -32,13 +32,13 @@ class WeatherActivity : AppCompatActivity() {
         val resultListFragment = WeatherListFragment()
 
         supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.weather_title, weatherTitleFragment)
-            .commit()
+                .beginTransaction()
+                .replace(R.id.weather_title, weatherTitleFragment)
+                .commit()
         supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.weather_list, resultListFragment)
-            .commit()
+                .beginTransaction()
+                .replace(R.id.weather_list, resultListFragment)
+                .commit()
 
         viewModel.states.observe(this, Observer { state ->
             when (state) {
@@ -54,13 +54,13 @@ class WeatherActivity : AppCompatActivity() {
         weather_views.visibility = View.GONE
         weather_error.visibility = View.VISIBLE
         Snackbar.make(
-            weather_result,
-            "WeatherActivity got error : $error",
-            Snackbar.LENGTH_INDEFINITE
+                weather_result,
+                "WeatherActivity got error : $error",
+                Snackbar.LENGTH_INDEFINITE
         )
-            .setAction(R.string.retry) {
-                startActivity(intentFor<WeatherActivity>().clearTop().clearTask().newTask())
-            }
-            .show()
+                .setAction(R.string.retry) {
+                    startActivity(intentFor<WeatherActivity>().clearTop().clearTask().newTask())
+                }
+                .show()
     }
 }
