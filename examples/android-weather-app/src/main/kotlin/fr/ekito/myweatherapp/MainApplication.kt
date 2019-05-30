@@ -19,6 +19,7 @@ class MainApplication : Application() {
 
         // start Koin context
         startKoin {
+            fileProperties()
             androidLogger(Level.DEBUG)
             androidContext(this@MainApplication)
             modules(roomWeatherApp)
