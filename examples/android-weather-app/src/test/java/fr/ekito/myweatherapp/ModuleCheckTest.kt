@@ -5,9 +5,11 @@ import fr.ekito.myweatherapp.di.offlineWeatherApp
 import fr.ekito.myweatherapp.di.onlineWeatherApp
 import fr.ekito.myweatherapp.di.roomWeatherApp
 import fr.ekito.myweatherapp.di.testWeatherApp
+import fr.ekito.myweatherapp.view.detail.DetailViewModel
 import org.junit.Test
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.logger.Level
+import org.koin.core.parameter.parametersOf
 import org.koin.dsl.koinApplication
 import org.koin.test.KoinTest
 import org.koin.test.check.checkModules
@@ -18,14 +20,18 @@ import org.mockito.Mockito.mock
  */
 class ModuleCheckTest : KoinTest {
 
-    val mockedAndroidContext = mock(Application::class.java)
+    private val mockedAndroidContext = mock(Application::class.java)
+    private val viewModelId = "someId"
 
     @Test
     fun testRemoteConfiguration() {
         koinApplication {
+            fileProperties()
             androidContext(mockedAndroidContext)
             modules(onlineWeatherApp)
-        }.checkModules()
+        }.checkModules {
+            create<DetailViewModel> { parametersOf(viewModelId) }
+        }
     }
 
     @Test
@@ -33,7 +39,9 @@ class ModuleCheckTest : KoinTest {
         koinApplication {
             androidContext(mockedAndroidContext)
             modules(offlineWeatherApp)
-        }.checkModules()
+        }.checkModules {
+            create<DetailViewModel> { parametersOf(viewModelId) }
+        }
     }
 
     @Test
@@ -42,7 +50,9 @@ class ModuleCheckTest : KoinTest {
             printLogger(Level.DEBUG)
             androidContext(mockedAndroidContext)
             modules(testWeatherApp)
-        }.checkModules()
+        }.checkModules {
+            create<DetailViewModel> { parametersOf(viewModelId) }
+        }
     }
 
     @Test
@@ -50,6 +60,8 @@ class ModuleCheckTest : KoinTest {
         koinApplication {
             androidContext(mockedAndroidContext)
             modules(roomWeatherApp)
-        }.checkModules()
+        }.checkModules {
+            create<DetailViewModel> { parametersOf(viewModelId) }
+        }
     }
 }
