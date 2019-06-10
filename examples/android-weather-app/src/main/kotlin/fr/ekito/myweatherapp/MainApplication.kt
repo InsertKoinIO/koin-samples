@@ -25,7 +25,6 @@ class MainApplication : Application() {
             modules(roomWeatherApp)
         }
 
-        Iconify
-                .with(WeathericonsModule())
+        Iconify.with(WeathericonsModule())
     }
 }
