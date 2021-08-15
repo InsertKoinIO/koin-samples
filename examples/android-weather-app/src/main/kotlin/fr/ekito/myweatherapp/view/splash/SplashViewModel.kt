@@ -24,7 +24,7 @@ class SplashViewModel(
         _events.value = Pending
         launch {
             dailyForecastRepository.getWeather().with(schedulerProvider)
-                .toCompletable()
+                .ignoreElement()
                 .subscribe(
                     { _events.value = Success },
                     { error -> _events.value = Error(error) })

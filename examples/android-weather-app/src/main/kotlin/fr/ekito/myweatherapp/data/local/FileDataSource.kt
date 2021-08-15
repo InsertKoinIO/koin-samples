@@ -4,12 +4,13 @@ import fr.ekito.myweatherapp.data.WeatherDataSource
 import fr.ekito.myweatherapp.data.json.Geocode
 import fr.ekito.myweatherapp.data.json.Weather
 import io.reactivex.Single
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 
 /**
  * Read json files and render weather date
  */
-class FileDataSource(val jsonReader: JsonReader, val delayed: Boolean) :
+class FileDataSource(private val jsonReader: JsonReader, private val delayed: Boolean) :
     WeatherDataSource {
 
     private val cities by lazy { jsonReader.getAllLocations() }
@@ -23,7 +24,7 @@ class FileDataSource(val jsonReader: JsonReader, val delayed: Boolean) :
 
     override fun geocode(address: String): Single<Geocode> {
         val single = Single.create<Geocode> { s ->
-            val addressToLC = address.toLowerCase()
+            val addressToLC = address.lowercase(Locale.getDefault())
             val geocode = if (isKnownCity(addressToLC)) {
                 jsonReader.getGeocode(addressToLC)
             } else {
