@@ -2,7 +2,7 @@ package fr.ekito.myweatherapp.data
 
 import fr.ekito.myweatherapp.data.json.Geocode
 import fr.ekito.myweatherapp.data.json.Weather
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query

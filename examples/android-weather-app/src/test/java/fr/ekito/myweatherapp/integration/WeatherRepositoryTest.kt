@@ -2,6 +2,7 @@ package fr.ekito.myweatherapp.integration
 
 import fr.ekito.myweatherapp.di.testWeatherApp
 import fr.ekito.myweatherapp.domain.repository.DailyForecastRepository
+import fr.ekito.myweatherapp.util.awaitTerminalEvent
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotSame

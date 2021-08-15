@@ -10,7 +10,7 @@ import fr.ekito.myweatherapp.view.Pending
 import fr.ekito.myweatherapp.view.Success
 import fr.ekito.myweatherapp.view.ViewModelEvent
 import fr.ekito.myweatherapp.view.splash.SplashViewModel
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule

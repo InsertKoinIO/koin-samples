@@ -6,8 +6,8 @@ import fr.ekito.myweatherapp.data.room.WeatherEntity
 import fr.ekito.myweatherapp.domain.entity.DailyForecast
 import fr.ekito.myweatherapp.domain.ext.getDailyForecasts
 import fr.ekito.myweatherapp.domain.ext.getLocation
-import io.reactivex.Single
-import java.util.*
+import io.reactivex.rxjava3.core.Single
+import java.util.Date
 
 class DailyForecastRepositoryRoomImpl(
     private val weatherDatasource: WeatherDataSource,

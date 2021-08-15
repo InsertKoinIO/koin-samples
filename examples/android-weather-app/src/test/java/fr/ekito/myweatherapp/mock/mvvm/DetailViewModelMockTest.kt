@@ -9,7 +9,7 @@ import fr.ekito.myweatherapp.view.Failed
 import fr.ekito.myweatherapp.view.Loading
 import fr.ekito.myweatherapp.view.ViewModelState
 import fr.ekito.myweatherapp.view.detail.DetailViewModel
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule

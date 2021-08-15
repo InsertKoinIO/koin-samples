@@ -9,5 +9,5 @@ ext {
     anko_version='0.10.4'
     okhttp_version = '4.9.1'
     retrofit_version = '2.9.0'
-    rxjava_version = '2.2.21'
+    rxjava_version = '3.1.0'
 }

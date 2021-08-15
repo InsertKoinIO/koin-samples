@@ -1,6 +1,6 @@
 package fr.ekito.myweatherapp.util.coroutines
 
-import io.reactivex.Scheduler
+import io.reactivex.rxjava3.core.Scheduler
 
 /**
  * Rx Scheduler Provider

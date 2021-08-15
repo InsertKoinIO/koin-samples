@@ -97,7 +97,7 @@ class WeatherDAOTest : KoinTest {
     ): List<WeatherEntity> {
         return weatherWebDatasource.geocode(locationParis)
             .map { it.getLocation() }
-            .flatMap { weatherWebDatasource.weather(it.lat, it.lng, "EN") }
+            .flatMap { weatherWebDatasource.weather(it?.lat, it?.lng, "EN") }
             .map { it.getDailyForecasts(locationParis) }
             .map { list -> list.map { WeatherEntity.from(it, dateParis) } }
             .blockingGet()

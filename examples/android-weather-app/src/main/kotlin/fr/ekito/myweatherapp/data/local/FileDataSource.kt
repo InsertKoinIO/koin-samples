@@ -3,7 +3,7 @@ package fr.ekito.myweatherapp.data.local
 import fr.ekito.myweatherapp.data.WeatherDataSource
 import fr.ekito.myweatherapp.data.json.Geocode
 import fr.ekito.myweatherapp.data.json.Weather
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import java.util.Locale
 import java.util.concurrent.TimeUnit
 
