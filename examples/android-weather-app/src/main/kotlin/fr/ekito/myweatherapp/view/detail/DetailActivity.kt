@@ -1,9 +1,8 @@
 package fr.ekito.myweatherapp.view.detail
 
-import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import fr.ekito.myweatherapp.R
 import fr.ekito.myweatherapp.domain.entity.DailyForecast
 import fr.ekito.myweatherapp.domain.entity.getColorFromCode
@@ -27,7 +26,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        detailViewModel.states.observe(this, Observer { state ->
+        detailViewModel.states.observe(this, { state ->
             when (state) {
                 is Failed -> showError(state.error)
                 is DetailViewModel.DetailLoaded -> showDetail(state.weather)
@@ -36,7 +35,7 @@ class DetailActivity : AppCompatActivity() {
         detailViewModel.getDetail()
     }
 
-    fun showError(error: Throwable) {
+    private fun showError(error: Throwable) {
         Snackbar.make(
                 weatherItem,
                 getString(R.string.loading_error) + " - $error",

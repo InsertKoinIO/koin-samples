@@ -1,7 +1,5 @@
 package fr.ekito.myweatherapp.data.json
 
-import java.util.*
-
 data class Avewind(
     val mph: Int? = null,
     val kph: Int? = null,

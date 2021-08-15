@@ -1,18 +1,18 @@
 package fr.ekito.myweatherapp.view.weather.list
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.joanzapata.iconify.widget.IconTextView
 import fr.ekito.myweatherapp.R
 import fr.ekito.myweatherapp.domain.entity.getColorFromCode
 
 class WeatherListAdapter(
-    val context: Context,
+    private val context: Context,
     var list: List<WeatherItem>,
     private val onDetailSelected: (WeatherItem) -> Unit
 ) : RecyclerView.Adapter<WeatherListAdapter.WeatherResultHolder>() {

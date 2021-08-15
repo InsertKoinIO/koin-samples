@@ -1,7 +1,7 @@
 package fr.ekito.myweatherapp.mock.mvvm
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
-import android.arch.lifecycle.Observer
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
 import fr.ekito.myweatherapp.domain.entity.DailyForecast
 import fr.ekito.myweatherapp.domain.repository.DailyForecastRepository
 import fr.ekito.myweatherapp.util.TestSchedulerProvider
@@ -24,16 +24,18 @@ import org.mockito.MockitoAnnotations
 
 class DetailViewModelMockTest {
 
-    lateinit var detailViewModel: DetailViewModel
+    private lateinit var detailViewModel: DetailViewModel
+
     @Mock
     lateinit var view: Observer<ViewModelState>
+
     @Mock
     lateinit var repository: DailyForecastRepository
 
     @get:Rule
     val rule = InstantTaskExecutorRule()
 
-    val id = "ID"
+    private val id = "ID"
 
     @Before
     fun before() {
@@ -65,7 +67,7 @@ class DetailViewModelMockTest {
     }
 
     @Test
-    fun testGeLasttWeatherFailed() {
+    fun testGeLastWeatherFailed() {
         val error = Throwable("Got error")
 
         given(repository.getWeatherDetail(id)).willReturn(Single.error(error))

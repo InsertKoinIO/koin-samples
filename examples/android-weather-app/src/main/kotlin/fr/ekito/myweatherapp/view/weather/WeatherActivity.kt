@@ -1,11 +1,11 @@
 package fr.ekito.myweatherapp.view.weather
 
-import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 import fr.ekito.myweatherapp.R
 import fr.ekito.myweatherapp.view.Failed
 import kotlinx.android.synthetic.main.activity_result.*
@@ -14,6 +14,7 @@ import org.jetbrains.anko.clearTop
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.newTask
 import org.koin.android.viewmodel.ext.android.viewModel
+
 
 /**
  * Weather Result View

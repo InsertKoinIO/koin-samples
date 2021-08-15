@@ -1,6 +1,6 @@
 package fr.ekito.myweatherapp
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import fr.ekito.myweatherapp.data.room.WeatherDatabase
 import org.koin.dsl.module
 

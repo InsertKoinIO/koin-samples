@@ -1,7 +1,7 @@
 package fr.ekito.myweatherapp.mock.mvvm
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
-import android.arch.lifecycle.Observer
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
 import fr.ekito.myweatherapp.domain.entity.DailyForecast
 import fr.ekito.myweatherapp.domain.repository.DailyForecastRepository
 import fr.ekito.myweatherapp.util.TestSchedulerProvider
@@ -23,7 +23,7 @@ import org.mockito.MockitoAnnotations
 
 class SplashViewModelMockTest {
 
-    lateinit var viewModel: SplashViewModel
+    private lateinit var viewModel: SplashViewModel
 
     @Mock
     lateinit var view: Observer<ViewModelEvent>
@@ -64,7 +64,7 @@ class SplashViewModelMockTest {
     }
 
     @Test
-    fun testGetLasttWeatherFailed() {
+    fun testGetLastWeatherFailed() {
         val error = Throwable("Got an error")
         given(repository.getWeather()).willReturn(Single.error(error))
 

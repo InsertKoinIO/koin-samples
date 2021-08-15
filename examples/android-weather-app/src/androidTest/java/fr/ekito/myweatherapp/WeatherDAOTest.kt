@@ -1,6 +1,6 @@
 package fr.ekito.myweatherapp
 
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import fr.ekito.myweatherapp.data.WeatherDataSource
 import fr.ekito.myweatherapp.data.room.WeatherDAO
 import fr.ekito.myweatherapp.data.room.WeatherDatabase
@@ -9,6 +9,7 @@ import fr.ekito.myweatherapp.domain.ext.getDailyForecasts
 import fr.ekito.myweatherapp.domain.ext.getLocation
 import junit.framework.Assert
 import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,16 +17,16 @@ import org.koin.core.context.loadKoinModules
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
-import java.util.Date
+import java.util.*
 
-@RunWith(AndroidJUnit4::class)
+@RunWith(AndroidJUnit4ClassRunner::class)
 class WeatherDAOTest : KoinTest {
 
-    val weatherDatabase: WeatherDatabase by inject()
-    val weatherWebDatasource: WeatherDataSource by inject()
-    val weatherDAO: WeatherDAO by inject()
+    private val weatherDatabase: WeatherDatabase by inject()
+    private val weatherWebDatasource: WeatherDataSource by inject()
+    private val weatherDAO: WeatherDAO by inject()
 
-    @Before()
+    @Before
     fun before() {
         loadKoinModules(roomTestModule)
     }
@@ -48,7 +49,7 @@ class WeatherDAOTest : KoinTest {
 
         val requestedEntities = ids.map { weatherDAO.findWeatherById(it).blockingGet() }
 
-        Assert.assertEquals(entities, requestedEntities)
+        assertEquals(entities, requestedEntities)
     }
 
     @Test
@@ -65,7 +66,7 @@ class WeatherDAOTest : KoinTest {
 
         val resultList = weatherDAO.findAllBy(locationTlse, dateToulouse).blockingGet()
 
-        Assert.assertEquals(weatherToulouse, resultList)
+        assertEquals(weatherToulouse, resultList)
     }
 
     @Test
@@ -88,7 +89,7 @@ class WeatherDAOTest : KoinTest {
         val result: WeatherEntity = weatherDAO.findLatestWeather().blockingGet().first()
         val resultList = weatherDAO.findAllBy(result.location, result.date).blockingGet()
 
-        Assert.assertEquals(weatherToulouse, resultList)
+        assertEquals(weatherToulouse, resultList)
     }
 
     private fun getWeatherAsEntities(

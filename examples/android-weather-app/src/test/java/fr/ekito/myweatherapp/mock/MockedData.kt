@@ -10,7 +10,7 @@ import fr.ekito.myweatherapp.domain.entity.Wind
  */
 object MockedData {
 
-    val location = "Location"
+    const val location = "Location"
 
     val mockList = listOf(
         DailyForecast(

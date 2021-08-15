@@ -1,9 +1,9 @@
 package fr.ekito.myweatherapp
 
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import fr.ekito.myweatherapp.domain.repository.DailyForecastRepository
-import junit.framework.Assert
 import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -12,12 +12,12 @@ import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
 
-@RunWith(AndroidJUnit4::class)
+@RunWith(AndroidJUnit4ClassRunner::class)
 class WeatherRepositoryTest : KoinTest {
 
     private val weatherRepository: DailyForecastRepository by inject()
 
-    @Before()
+    @Before
     fun before() {
         loadKoinModules(roomTestModule)
     }
@@ -31,7 +31,7 @@ class WeatherRepositoryTest : KoinTest {
     fun testGetDefault() {
         val defaultWeather = weatherRepository.getWeather().blockingGet()
         val defaultWeather2 = weatherRepository.getWeather().blockingGet()
-        Assert.assertEquals(defaultWeather, defaultWeather2)
+        assertEquals(defaultWeather, defaultWeather2)
     }
 
     @Test
@@ -40,7 +40,7 @@ class WeatherRepositoryTest : KoinTest {
 
         val result = defaultWeather.first()
         val first = weatherRepository.getWeatherDetail(result.id).blockingGet()
-        Assert.assertEquals(result, first)
+        assertEquals(result, first)
     }
 
     @Test
@@ -49,6 +49,6 @@ class WeatherRepositoryTest : KoinTest {
         weatherRepository.getWeather("London").blockingGet()
         val toulouse = weatherRepository.getWeather("Toulouse").blockingGet()
         val defaultWeather3 = weatherRepository.getWeather().blockingGet()
-        Assert.assertEquals(defaultWeather3, toulouse)
+        assertEquals(defaultWeather3, toulouse)
     }
 }

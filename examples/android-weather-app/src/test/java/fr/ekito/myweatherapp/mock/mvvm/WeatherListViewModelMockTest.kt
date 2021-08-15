@@ -1,7 +1,7 @@
 package fr.ekito.myweatherapp.mock.mvvm
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
-import android.arch.lifecycle.Observer
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
 import fr.ekito.myweatherapp.domain.repository.DailyForecastRepository
 import fr.ekito.myweatherapp.mock.MockedData.mockList
 import fr.ekito.myweatherapp.util.TestSchedulerProvider
@@ -23,9 +23,11 @@ import org.mockito.MockitoAnnotations
 
 class WeatherListViewModelMockTest {
 
-    lateinit var viewModel: WeatherViewModel
+    private lateinit var viewModel: WeatherViewModel
+
     @Mock
     lateinit var view: Observer<ViewModelState>
+
     @Mock
     lateinit var repository: DailyForecastRepository
 

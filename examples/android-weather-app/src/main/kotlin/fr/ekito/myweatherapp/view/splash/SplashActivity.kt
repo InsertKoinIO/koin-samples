@@ -1,11 +1,10 @@
 package fr.ekito.myweatherapp.view.splash
 
-import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import fr.ekito.myweatherapp.R
 import fr.ekito.myweatherapp.view.Error
 import fr.ekito.myweatherapp.view.Pending
@@ -29,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        splashViewModel.events.observe(this, Observer { event ->
+        splashViewModel.events.observe(this, { event ->
             when (event) {
                 is Pending -> showIsLoading()
                 is Success -> showIsLoaded()

@@ -1,6 +1,6 @@
 package fr.ekito.myweatherapp.view.splash
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import fr.ekito.myweatherapp.domain.repository.DailyForecastRepository
 import fr.ekito.myweatherapp.util.mvvm.RxViewModel
 import fr.ekito.myweatherapp.util.mvvm.SingleLiveEvent

@@ -2,8 +2,9 @@ package fr.ekito.myweatherapp.integration
 
 import fr.ekito.myweatherapp.di.testWeatherApp
 import fr.ekito.myweatherapp.domain.repository.DailyForecastRepository
-import junit.framework.Assert
 import org.junit.After
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotSame
 import org.junit.Before
 import org.junit.Test
 import org.koin.core.context.startKoin
@@ -13,7 +14,7 @@ import org.koin.test.inject
 
 class WeatherRepositoryTest : KoinTest {
 
-    val repository by inject<DailyForecastRepository>()
+    private val repository by inject<DailyForecastRepository>()
 
     val location = "Paris"
 
@@ -43,8 +44,8 @@ class WeatherRepositoryTest : KoinTest {
         val l2 = repository.getWeather("Toulouse").blockingGet()
         val l3 = repository.getWeather().blockingGet()
 
-        Assert.assertEquals(l3, l2)
-        Assert.assertNotSame(l1, l2)
+        assertEquals(l3, l2)
+        assertNotSame(l1, l2)
     }
 
     @Test
