@@ -1,5 +1,6 @@
 package fr.ekito.myweatherapp.view.splash
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -11,10 +12,6 @@ import fr.ekito.myweatherapp.view.Error
 import fr.ekito.myweatherapp.view.Pending
 import fr.ekito.myweatherapp.view.Success
 import fr.ekito.myweatherapp.view.weather.WeatherActivity
-import org.jetbrains.anko.clearTask
-import org.jetbrains.anko.clearTop
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.newTask
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -48,7 +45,13 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun showIsLoaded() {
-        startActivity(intentFor<WeatherActivity>().clearTop().clearTask().newTask())
+        startActivity(
+            Intent(this, WeatherActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+        )
     }
 
     private fun showError(error: Throwable) {

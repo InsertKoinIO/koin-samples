@@ -60,9 +60,6 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.4.0'
     androidTestUtil 'androidx.test:orchestrator:1.4.0'
 
-    // Anko
-    implementation "org.jetbrains.anko:anko-commons:$anko_version"
-
     // Koin
     implementation "io.insert-koin:koin-android:$koin_version"
     testImplementation "io.insert-koin:koin-test:$koin_version"

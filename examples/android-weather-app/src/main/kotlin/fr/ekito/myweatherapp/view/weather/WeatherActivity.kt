@@ -1,5 +1,6 @@
 package fr.ekito.myweatherapp.view.weather
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,10 +9,6 @@ import com.google.android.material.snackbar.Snackbar
 import fr.ekito.myweatherapp.R
 import fr.ekito.myweatherapp.databinding.ActivityResultBinding
 import fr.ekito.myweatherapp.view.Failed
-import org.jetbrains.anko.clearTask
-import org.jetbrains.anko.clearTop
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.newTask
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -64,7 +61,13 @@ class WeatherActivity : AppCompatActivity() {
                 Snackbar.LENGTH_INDEFINITE
             )
                 .setAction(R.string.retry) {
-                    startActivity(intentFor<WeatherActivity>().clearTop().clearTask().newTask())
+                    startActivity(
+                        Intent(this@WeatherActivity, WeatherActivity::class.java).apply {
+                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        }
+                    )
                 }
                 .show()
         }
