@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import fr.ekito.myweatherapp.R
 import fr.ekito.myweatherapp.view.Failed
@@ -13,7 +12,7 @@ import org.jetbrains.anko.clearTask
 import org.jetbrains.anko.clearTop
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.newTask
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 /**
@@ -21,7 +20,9 @@ import org.koin.android.viewmodel.ext.android.viewModel
  */
 class WeatherActivity : AppCompatActivity() {
 
-    private val TAG = this::class.java.simpleName
+    companion object {
+        private val TAG = this::class.java.simpleName
+    }
 
     private val viewModel: WeatherViewModel by viewModel()
 
@@ -41,7 +42,7 @@ class WeatherActivity : AppCompatActivity() {
                 .replace(R.id.weather_list, resultListFragment)
                 .commit()
 
-        viewModel.states.observe(this, Observer { state ->
+        viewModel.states.observe(this, { state ->
             when (state) {
                 is Failed -> showError(state.error)
             }

@@ -11,7 +11,7 @@ import org.koin.dsl.module
 val roomDataSourceModule = module {
 
     // Weather Room Data Repository
-    single<DailyForecastRepository>(override = true) {
+    single<DailyForecastRepository> {
         DailyForecastRepositoryRoomImpl(
             get(),
             get()

@@ -60,9 +60,9 @@ dependencies {
 
     // Anko
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
+
     // Koin
     implementation "io.insert-koin:koin-android:$koin_version"
-    implementation "io.insert-koin:koin-android-viewmodel:$koin_version"
     testImplementation "io.insert-koin:koin-test:$koin_version"
     androidTestImplementation "io.insert-koin:koin-test:$koin_version"
 

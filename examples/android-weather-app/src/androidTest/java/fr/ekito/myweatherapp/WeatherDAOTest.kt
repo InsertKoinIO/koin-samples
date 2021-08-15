@@ -7,7 +7,6 @@ import fr.ekito.myweatherapp.data.room.WeatherDatabase
 import fr.ekito.myweatherapp.data.room.WeatherEntity
 import fr.ekito.myweatherapp.domain.ext.getDailyForecasts
 import fr.ekito.myweatherapp.domain.ext.getLocation
-import junit.framework.Assert
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before

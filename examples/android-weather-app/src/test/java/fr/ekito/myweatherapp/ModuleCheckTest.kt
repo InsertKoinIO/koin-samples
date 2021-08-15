@@ -11,6 +11,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.logger.Level
 import org.koin.core.parameter.parametersOf
 import org.koin.dsl.koinApplication
+import org.koin.fileProperties
 import org.koin.test.KoinTest
 import org.koin.test.check.checkModules
 import org.mockito.Mockito.mock
