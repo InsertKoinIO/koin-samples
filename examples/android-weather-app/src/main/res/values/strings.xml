@@ -9,4 +9,9 @@
     <string name="loading_location">Loading location</string>
     <string name="icon">Icon</string>
     <string name="day">Day</string>
+    <string name="complete_text">Complete Text</string>
+    <string name="city">City</string>
+    <string name="wind">Wind</string>
+    <string name="temp">Temp</string>
+    <string name="humidity">Humidity</string>
 </resources>
