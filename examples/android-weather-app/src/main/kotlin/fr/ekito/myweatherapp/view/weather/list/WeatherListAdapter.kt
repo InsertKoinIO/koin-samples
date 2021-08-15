@@ -2,13 +2,9 @@ package fr.ekito.myweatherapp.view.weather.list
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.joanzapata.iconify.widget.IconTextView
-import fr.ekito.myweatherapp.R
+import fr.ekito.myweatherapp.databinding.ItemWeatherBinding
 import fr.ekito.myweatherapp.domain.entity.getColorFromCode
 
 class WeatherListAdapter(
@@ -18,8 +14,8 @@ class WeatherListAdapter(
 ) : RecyclerView.Adapter<WeatherListAdapter.WeatherResultHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherResultHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_weather, parent, false)
-        return WeatherResultHolder(view)
+        val binding = ItemWeatherBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return WeatherResultHolder(binding)
     }
 
     override fun onBindViewHolder(holder: WeatherResultHolder, position: Int) {
@@ -28,22 +24,22 @@ class WeatherListAdapter(
 
     override fun getItemCount() = list.size
 
-    inner class WeatherResultHolder(item: View) : RecyclerView.ViewHolder(item) {
-        private val weatherItemLayout = item.findViewById<LinearLayout>(R.id.weatherItemLayout)
-        private val weatherItemDay = item.findViewById<TextView>(R.id.weatheItemrDay)
-        private val weatherItemIcon = item.findViewById<IconTextView>(R.id.weatherItemIcon)
-
+    inner class WeatherResultHolder(
+        private val binding: ItemWeatherBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun display(
             dailyForecastModel: WeatherItem,
             context: Context,
             onClick: (WeatherItem) -> Unit
         ) {
-            weatherItemLayout.setOnClickListener { onClick(dailyForecastModel) }
-            weatherItemDay.text = dailyForecastModel.day
-            weatherItemIcon.text = dailyForecastModel.icon
-            val color = context.getColorFromCode(dailyForecastModel)
-            weatherItemDay.setTextColor(color)
-            weatherItemIcon.setTextColor(color)
+            with(binding) {
+                weatherItemLayout.setOnClickListener { onClick(dailyForecastModel) }
+                weatherItemDay.text = dailyForecastModel.day
+                weatherItemIcon.text = dailyForecastModel.icon
+                val color = context.getColorFromCode(dailyForecastModel)
+                weatherItemDay.setTextColor(color)
+                weatherItemIcon.setTextColor(color)
+            }
         }
 
     }

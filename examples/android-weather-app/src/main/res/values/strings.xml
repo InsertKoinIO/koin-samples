@@ -7,4 +7,6 @@
     <string name="cancel">CANCEL</string>
     <string name="retry">Retry</string>
     <string name="loading_location">Loading location</string>
+    <string name="icon">Icon</string>
+    <string name="day">Day</string>
 </resources>
