@@ -7,14 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import fr.ekito.myweatherapp.R
+import fr.ekito.myweatherapp.databinding.FragmentResultListBinding
 import fr.ekito.myweatherapp.view.detail.DetailActivity
 import fr.ekito.myweatherapp.view.weather.list.WeatherItem
 import fr.ekito.myweatherapp.view.weather.list.WeatherListAdapter
-import kotlinx.android.synthetic.main.fragment_result_list.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class WeatherListFragment : Fragment() {
+
+    private var _binding: FragmentResultListBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel: WeatherViewModel by sharedViewModel()
 
@@ -22,8 +24,9 @@ class WeatherListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_result_list, container, false)
+    ): View {
+        _binding = FragmentResultListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,14 +41,21 @@ class WeatherListFragment : Fragment() {
         })
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun prepareListView() {
-        weatherList.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        weatherList.adapter = WeatherListAdapter(
-            requireActivity(),
-            emptyList(),
-            ::onWeatherItemSelected
-        )
+        with(binding) {
+            weatherList.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            weatherList.adapter = WeatherListAdapter(
+                requireActivity(),
+                emptyList(),
+                ::onWeatherItemSelected
+            )
+        }
     }
 
     private fun onWeatherItemSelected(resultItem: WeatherItem) {
@@ -58,7 +68,7 @@ class WeatherListFragment : Fragment() {
     }
 
     private fun showWeatherItemList(newList: List<WeatherItem>) {
-        val adapter: WeatherListAdapter = weatherList.adapter as WeatherListAdapter
+        val adapter: WeatherListAdapter = binding.weatherList.adapter as WeatherListAdapter
         adapter.list = newList
         adapter.notifyDataSetChanged()
     }
