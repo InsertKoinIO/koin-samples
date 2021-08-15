@@ -23,9 +23,9 @@ class WeatherHeaderFragment : Fragment() {
     private val viewModel: WeatherViewModel by sharedViewModel()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_result_header, container, false) as ViewGroup
     }
@@ -90,18 +90,18 @@ class WeatherHeaderFragment : Fragment() {
 
     private fun showLoadingLocation(location: String) {
         Snackbar.make(
-                weatherHeader,
-                getString(R.string.loading_location) + " $location ...",
-                Snackbar.LENGTH_LONG
+            weatherHeader,
+            getString(R.string.loading_location) + " $location ...",
+            Snackbar.LENGTH_LONG
         )
-                .show()
+            .show()
     }
 
     private fun showLocationSearchFailed(location: String, error: Throwable) {
         Snackbar.make(weatherHeader, getString(R.string.loading_error), Snackbar.LENGTH_LONG)
-                .setAction(R.string.retry) {
-                    viewModel.loadNewLocation(location)
-                }
-                .show()
+            .setAction(R.string.retry) {
+                viewModel.loadNewLocation(location)
+            }
+            .show()
     }
 }
