@@ -83,7 +83,7 @@ dependencies {
     implementation 'com.joanzapata.iconify:android-iconify-weathericons:2.2.2'
 
     // Gson
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.8'
 
     // Networking
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

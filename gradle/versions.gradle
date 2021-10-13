@@ -3,8 +3,8 @@ ext {
     koin_version = '3.1.2'
 
     // Kotlin
-    kotlin_version = '1.5.21'
-    coroutines_version = "1.5.1"
+    kotlin_version = '1.5.31'
+    coroutines_version = "1.5.2"
     
     // Dokka
     dokka_version = '0.9.16'
