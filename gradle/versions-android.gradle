@@ -1,11 +1,11 @@
 ext {
     // Sdk and tools
     android_min_version = 21
-    android_target_version = 30
+    android_target_version = 31
 
     android_gradle_version = '7.0.3'
     android_build_tools_version  = '30.0.3'
 
     arch_version = "2.1.0"
-    lifecycle_version = '2.3.1'
+    lifecycle_version = '2.4.0'
 }
