@@ -4,7 +4,7 @@ ext {
     android_target_version = 30
 
     android_gradle_version = '7.0.3'
-    android_build_tools_version  = '30.0.2'
+    android_build_tools_version  = '30.0.3'
 
     arch_version = "2.1.0"
     lifecycle_version = '2.3.1'
