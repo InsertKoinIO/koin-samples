@@ -1,72 +1,85 @@
 package fr.ekito.myweatherapp.view.weather
 
 import android.app.AlertDialog
-import android.arch.lifecycle.Observer
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import fr.ekito.myweatherapp.R
+import fr.ekito.myweatherapp.databinding.FragmentResultHeaderBinding
 import fr.ekito.myweatherapp.domain.entity.DailyForecast
 import fr.ekito.myweatherapp.domain.entity.getColorFromCode
 import fr.ekito.myweatherapp.view.detail.DetailActivity
 import fr.ekito.myweatherapp.view.detail.DetailActivity.Companion.INTENT_WEATHER_ID
-import kotlinx.android.synthetic.main.fragment_result_header.*
-import org.jetbrains.anko.startActivity
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class WeatherHeaderFragment : Fragment() {
+
+    private var _binding: FragmentResultHeaderBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel: WeatherViewModel by sharedViewModel()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_result_header, container, false) as ViewGroup
+        _binding = FragmentResultHeaderBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.states.observe(this, Observer { state ->
+        viewModel.states.observe(viewLifecycleOwner, { state ->
             when (state) {
                 is WeatherViewModel.WeatherListLoaded -> showWeather(state.location, state.first)
             }
         })
-        viewModel.events.observe(this, Observer { event ->
+        viewModel.events.observe(viewLifecycleOwner, { event ->
             when (event) {
                 is WeatherViewModel.ProceedLocation -> showLoadingLocation(event.location)
                 is WeatherViewModel.ProceedLocationError -> showLocationSearchFailed(
-                        event.location,
-                        event.error
+                    event.location,
+                    event.error
                 )
             }
         })
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun showWeather(location: String, weather: DailyForecast) {
-        weatherCity.text = location
-        weatherCityCard.setOnClickListener {
-            promptLocationDialog()
-        }
+        with(binding) {
+            weatherCity.text = location
+            weatherCityCard.setOnClickListener {
+                promptLocationDialog()
+            }
 
-        weatherIcon.text = weather.icon
-        weatherDay.text = weather.day
-        weatherTempText.text = weather.temperature.toString()
-        weatherText.text = weather.shortText
+            weatherIcon.text = weather.icon
+            weatherDay.text = weather.day
+            weatherTempText.text = weather.temperature.toString()
+            weatherText.text = weather.shortText
 
-        val color = context!!.getColorFromCode(weather)
-        weatherHeader.background.setTint(color)
+            val color = requireContext().getColorFromCode(weather)
+            weatherHeader.background.setTint(color)
 
-        weatherHeader.setOnClickListener {
-            activity?.startActivity<DetailActivity>(
-                    INTENT_WEATHER_ID to weather.id
-            )
+            weatherHeader.setOnClickListener {
+                activity?.startActivity(
+                    Intent(context, DetailActivity::class.java).putExtra(
+                        INTENT_WEATHER_ID,
+                        weather.id
+                    )
+                )
+            }
         }
     }
 
@@ -91,18 +104,18 @@ class WeatherHeaderFragment : Fragment() {
 
     private fun showLoadingLocation(location: String) {
         Snackbar.make(
-                weatherHeader,
-                getString(R.string.loading_location) + " $location ...",
-                Snackbar.LENGTH_LONG
+            binding.weatherHeader,
+            getString(R.string.loading_location) + " $location ...",
+            Snackbar.LENGTH_LONG
         )
-                .show()
+            .show()
     }
 
     private fun showLocationSearchFailed(location: String, error: Throwable) {
-        Snackbar.make(weatherHeader, getString(R.string.loading_error), Snackbar.LENGTH_LONG)
-                .setAction(R.string.retry) {
-                    viewModel.loadNewLocation(location)
-                }
-                .show()
+        Snackbar.make(binding.weatherHeader, getString(R.string.loading_error), Snackbar.LENGTH_LONG)
+            .setAction(R.string.retry) {
+                viewModel.loadNewLocation(location)
+            }
+            .show()
     }
 }

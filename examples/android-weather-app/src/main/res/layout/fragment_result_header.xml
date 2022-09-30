@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/weatherHeader"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,7 +26,7 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="City"
+            android:text="@string/city"
             android:textColor="@color/icons_black" />
 
         <ImageView
@@ -35,7 +36,8 @@
             android:layout_gravity="center_vertical|end"
             android:layout_margin="8dp"
             android:src="@drawable/ic_location_on_black_24dp"
-            android:tint="@color/icons_black" />
+            app:tint="@color/icons_black"
+            android:contentDescription="@string/city" />
 
     </LinearLayout>
 
@@ -55,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
             android:gravity="center"
-            android:text="Day"
+            android:text="@string/day"
             android:textSize="21sp"
             android:textColor="@color/t_white" />
 
@@ -65,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:gravity="center"
-            android:text="Icon"
+            android:text="@string/icon"
             android:textColor="@color/t_white"
             android:textSize="92sp" />
 
@@ -76,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:gravity="center"
-            android:text="Complete Text"
+            android:text="@string/complete_text"
             android:textColor="@color/t_white" />
 
         <LinearLayout
@@ -91,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:gravity="center|right"
+                android:gravity="center|end"
                 android:text="{wi_thermometer 40sp}"
                 android:textColor="@color/t_white" />
 
@@ -101,8 +103,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:gravity="center|left"
-                android:text="Day"
+                android:gravity="center|start"
+                android:text="@string/day"
                 android:textColor="@color/t_white" />
 
         </LinearLayout>

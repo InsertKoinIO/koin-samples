@@ -1,7 +1,5 @@
 package fr.ekito.myweatherapp.data.json
 
-import java.util.*
-
 data class AddressComponent(
     val long_name: String? = null,
     val short_name: String? = null,

@@ -28,18 +28,18 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:gravity="center"
-            android:text="Icon"
+            android:text="@string/icon"
             android:textColor="@color/icons_black"
             android:textSize="50sp" />
 
         <TextView
-            android:id="@+id/weatheItemrDay"
+            android:id="@+id/weatherItemDay"
             style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:gravity="center"
-            android:text="Day"
+            android:text="@string/day"
             android:textColor="@color/icons_black" />
     </LinearLayout>
 

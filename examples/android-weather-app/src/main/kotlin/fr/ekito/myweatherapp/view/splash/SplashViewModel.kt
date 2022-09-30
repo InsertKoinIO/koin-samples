@@ -1,6 +1,6 @@
 package fr.ekito.myweatherapp.view.splash
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import fr.ekito.myweatherapp.domain.repository.DailyForecastRepository
 import fr.ekito.myweatherapp.util.mvvm.RxViewModel
 import fr.ekito.myweatherapp.util.mvvm.SingleLiveEvent
@@ -24,7 +24,7 @@ class SplashViewModel(
         _events.value = Pending
         launch {
             dailyForecastRepository.getWeather().with(schedulerProvider)
-                .toCompletable()
+                .ignoreElement()
                 .subscribe(
                     { _events.value = Success },
                     { error -> _events.value = Error(error) })

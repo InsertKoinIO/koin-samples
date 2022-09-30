@@ -9,8 +9,8 @@ import fr.ekito.myweatherapp.view.detail.DetailViewModel
 import org.junit.Test
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.logger.Level
-import org.koin.core.parameter.parametersOf
 import org.koin.dsl.koinApplication
+import org.koin.fileProperties
 import org.koin.test.KoinTest
 import org.koin.test.check.checkModules
 import org.mockito.Mockito.mock
@@ -30,7 +30,7 @@ class ModuleCheckTest : KoinTest {
             androidContext(mockedAndroidContext)
             modules(onlineWeatherApp)
         }.checkModules {
-            create<DetailViewModel> { parametersOf(viewModelId) }
+            withParameter<DetailViewModel> { viewModelId }
         }
     }
 
@@ -40,7 +40,7 @@ class ModuleCheckTest : KoinTest {
             androidContext(mockedAndroidContext)
             modules(offlineWeatherApp)
         }.checkModules {
-            create<DetailViewModel> { parametersOf(viewModelId) }
+            withParameter<DetailViewModel> { viewModelId }
         }
     }
 
@@ -51,7 +51,7 @@ class ModuleCheckTest : KoinTest {
             androidContext(mockedAndroidContext)
             modules(testWeatherApp)
         }.checkModules {
-            create<DetailViewModel> { parametersOf(viewModelId) }
+            withParameter<DetailViewModel> { viewModelId }
         }
     }
 
@@ -61,7 +61,7 @@ class ModuleCheckTest : KoinTest {
             androidContext(mockedAndroidContext)
             modules(roomWeatherApp)
         }.checkModules {
-            create<DetailViewModel> { parametersOf(viewModelId) }
+            withParameter<DetailViewModel> { viewModelId }
         }
     }
 }

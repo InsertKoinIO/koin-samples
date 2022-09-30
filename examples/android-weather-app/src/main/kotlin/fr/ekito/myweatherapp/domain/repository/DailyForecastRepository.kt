@@ -4,7 +4,7 @@ import fr.ekito.myweatherapp.data.WeatherDataSource
 import fr.ekito.myweatherapp.domain.entity.DailyForecast
 import fr.ekito.myweatherapp.domain.ext.getDailyForecasts
 import fr.ekito.myweatherapp.domain.ext.getLocation
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 
 /**
  * Weather repository

@@ -1,10 +1,10 @@
 package fr.ekito.myweatherapp.data.room
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
-import io.reactivex.Single
-import java.util.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import io.reactivex.rxjava3.core.Single
+import java.util.Date
 
 @Dao
 interface WeatherDAO {

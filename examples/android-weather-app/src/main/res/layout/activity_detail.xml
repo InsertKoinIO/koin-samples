@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/weatherItem"
@@ -18,7 +18,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:gravity="center"
-        android:text="Day"
+        android:text="@string/day"
         android:textColor="@color/t_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Icon"
+        android:text="@string/icon"
         android:textColor="@color/t_white"
         android:textSize="104sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +53,7 @@
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:maxLines="3"
-        android:text="Complete Text"
+        android:text="@string/complete_text"
         android:textColor="@color/t_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +85,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center|start"
-        android:text="Wind"
+        android:text="@string/wind"
         android:textColor="@color/t_white"
         app:layout_constraintBottom_toBottomOf="@+id/weatherWind"
         app:layout_constraintEnd_toEndOf="@+id/weatherText"
@@ -115,7 +115,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center|start"
-        android:text="Temp"
+        android:text="@string/temp"
         android:textColor="@color/t_white"
         app:layout_constraintBottom_toBottomOf="@+id/weatherTemp"
         app:layout_constraintEnd_toEndOf="@+id/weatherText"
@@ -145,21 +145,21 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center|start"
-        android:text="Humidity"
+        android:text="@string/humidity"
         android:textColor="@color/t_white"
         app:layout_constraintBottom_toBottomOf="@+id/weatherHumidity"
         app:layout_constraintEnd_toEndOf="@+id/weatherText"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/weatherHumidity" />
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="140dp" />
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -167,5 +167,5 @@
         app:layout_constraintGuide_percent="0.12777779" />
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

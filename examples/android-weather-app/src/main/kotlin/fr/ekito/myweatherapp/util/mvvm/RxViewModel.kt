@@ -1,9 +1,9 @@
 package fr.ekito.myweatherapp.util.mvvm
 
-import android.arch.lifecycle.ViewModel
-import android.support.annotation.CallSuper
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import androidx.annotation.CallSuper
+import androidx.lifecycle.ViewModel
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 /**
  * ViewModel for Rx Jobs

@@ -1,9 +1,9 @@
 package fr.ekito.myweatherapp.data.room
 
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import fr.ekito.myweatherapp.domain.entity.DailyForecast
-import java.util.*
+import java.util.Date
 
 @Entity(tableName = "weather")
 data class WeatherEntity(
